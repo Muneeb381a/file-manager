@@ -60,6 +60,10 @@ def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
+@app.get("/")
+def home():
+    return {"message": "Hello from FastAPI on Vercel"}
+
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
     # --- 1. Check if file type allowed ---
